@@ -119,18 +119,18 @@ loadElements = () => {
 window.onload = loadElements();
 
 
-window.addEventListener("scroll", () => {
+window.onscroll( function (){
 
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+        const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
 
-    if (clientHeight + scrollTop >= scrollHeight - 50) {
-        let denom = denominateur()
-        let height = imageSize(clientHeight, denom)
-        let width = imageSize((containerWidth-(denom*20)), denom)
-        addStuff(width, height, denom)
+        if (clientHeight + scrollTop >= scrollHeight - 50) {
+            let denom = denominateur()
+            let height = imageSize(clientHeight, denom)
+            let width = imageSize((containerWidth-(denom*20)), denom)
+            addStuff(width, height, denom)
+        }
     }
-
-})
+)
 
 
 // fonction qui ajoute les images dans le container
