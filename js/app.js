@@ -1,7 +1,6 @@
 const container = document.querySelector(".container");
 const loader = document.querySelector(".loader");
 const images = document.querySelectorAll(".fas")
-const popup = document.querySelector(".popup")
 let search = "beer"
 let index = 0;
 let containerWidth = container.offsetWidth;
@@ -131,11 +130,6 @@ window.addEventListener("scroll", () => {
         addStuff(width, height, denom)
     }
 
-    if (index > 50){
-        addPopup()
-        index = 0;
-    }
-
 })
 
 
@@ -157,23 +151,6 @@ function addStuff(width, height, denom){
     container.appendChild(newItem)
 }
 
-
-// Popup recherche
-addPopup = () => {
-    modal.style.display = "block";
-}
-
-// Fermeture du popup
-closeModal.onclick = function() {
-    modal.style.display = "none";
-}
-
-// Si on clique n'importe où dans la fenêtre, le popup se ferme
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
 // lors d'un refresh on remonte au top de la page
 window.onbeforeunload = () => {
@@ -198,7 +175,7 @@ form.addEventListener("submit", function(e){
     if(searchValue.value.match(regexSearch) === null || searchValue.value === "C'est pas bon non'di'dju!"){
         searchValue.classList.add("red")
         errorMessage.classList.add("active")
-        searchValue.value = "C'est pas bon non'di'dju!"
+        searchValue.value = ""
         e.preventDefault();
     } else {
         loadElements();
