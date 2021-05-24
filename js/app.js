@@ -131,7 +131,33 @@ window.onscroll( function (){
         }
     }
 )
+var derniere_position_de_scroll_connue = 0;
+var ticking = false;
 
+function faireQuelqueChose(position_scroll) {
+    
+  const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+        if (clientHeight + scrollTop >= scrollHeight - 50) {
+            let denom = denominateur()
+            let height = imageSize(clientHeight, denom)
+            let width = imageSize((containerWidth-(denom*20)), denom)
+            addStuff(width, height, denom)
+        }
+}
+
+window.addEventListener('scroll', function(e) {
+  derniere_position_de_scroll_connue = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      faireQuelqueChose(derniere_position_de_scroll_connue);
+      ticking = false;
+    });
+  }
+
+  ticking = true;
+});
 
 // fonction qui ajoute les images dans le container
 function addStuff(width, height, denom){
