@@ -178,13 +178,6 @@ function addStuff(width, height, denom){
 }
 
 
-// lors d'un refresh on remonte au top de la page
-window.onbeforeunload = () => {
-    window.scrollTo(0,0);
-    // return
-}
-
-
 // on enlève le message d'erreur et le texte en rouge
 searchValue.addEventListener("keyup", function(e) {
     if(searchValue.classList.contains("red")){
